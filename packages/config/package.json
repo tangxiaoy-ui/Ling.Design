@@ -1,0 +1,14 @@
+{
+  "name": "@ling-design/config",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./tailwind": "./tailwind.config.js"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.0"
+  }
+}

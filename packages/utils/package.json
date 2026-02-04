@@ -1,0 +1,13 @@
+{
+  "name": "@ling-design/utils",
+  "version": "0.0.1",
+  "private": false,
+  "main": "src/index.ts",
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
