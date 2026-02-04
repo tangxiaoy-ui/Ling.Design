@@ -1,36 +1,37 @@
-# Ling Design 智能体团队 (AGENTS)
+# Repository Guidelines
 
-本项目由以下几位虚拟智能体 (Agents) 协作维护，旨在打造高质量的 Ling Design 设计规范与组件库。
+## Project Structure & Module Organization
+- `apps/`: runnable apps. Currently `apps/playground` (Vite-based dev sandbox).
+- `packages/`: libraries.
+  - `packages/core`: React component library (builds to `dist/`).
+  - `packages/config`: shared Tailwind config + tokens entry.
+  - `packages/utils`: shared utilities.
+  - `packages/icons-source`: icon sources/bridges.
+- `ling-design-tokens-skill/`: design token references and skill docs.
 
-## 👥 核心角色
+## Build, Test, and Development Commands
+- `pnpm install`: install workspace dependencies.
+- `pnpm dev`: run all dev tasks via Turborepo.
+- `pnpm build`: build all packages/apps via Turborepo.
+- `pnpm lint`: run lint tasks (per-package).
+- `pnpm format`: format `*.ts`, `*.tsx`, `*.md` with Prettier.
+- `pnpm --filter playground dev`: run the playground only (Vite).
+- `pnpm --filter @ling-design/core build`: build core library (tsup + Tailwind CSS).
 
-### 1. 🎨 设计规范专家 (Design System Architect)
-- **职责**: 维护全局设计变量（Colors, Spacing, Typography, Radius）。
-- **关注点**: 确保所有设计 Token 的单一信源（Single Source of Truth），管理 `ling-design-tokens-skill` 和 `全局变量` 目录。
-- **任务示例**:
-  - "同步最新的颜色变量到 Tailwind 配置"
-  - "检查 entry page 是否符合设计规范"
+## Coding Style & Naming Conventions
+- Language: TypeScript + React.
+- Formatting: Prettier (`pnpm format`). No repo `.editorconfig` found; keep 2-space indentation unless existing files differ.
+- Naming: packages use scoped names like `@ling-design/*`. Exports live under `packages/*/src` and build to `dist/` where applicable.
 
-### 2. ⚛️ 组件开发工程师 (Component Engineer)
-- **职责**: 开发和维护 React 组件库 (`packages/core`) 及应用端组件。
-- **关注点**: 组件的复用性、TypeScript 类型定义、Tailwind 样式实现。
-- **任务示例**:
-  - "创建一个 Button 组件，支持 primary 和 secondary 变体"
-  - "修复 Input 组件的圆角样式问题"
+## Testing Guidelines
+No dedicated test framework or scripts were found in `package.json`. If you add tests, document the runner and add a root script (e.g., `pnpm test`) plus per-package scripts. Keep test file names consistent with the chosen runner (e.g., `*.test.tsx`).
 
-### 3. 📝 文档与技能维护者 (Documentation & Skill Maintainer)
-- **职责**: 编写和更新项目文档，维护 AI 辅助技能 (`SKILL.md`)。
-- **关注点**: 确保 `SKILL.md` 准确反映代码库现状，生成易于理解的开发指南。
-- **任务示例**:
-  - "更新 colors.md 引用文档"
-  - "生成 AGENTS.md 说明文件"
+## Commit & Pull Request Guidelines
+- Recent commits follow `type(scope): message` (e.g., `feat(core): ...`). Prefer this Conventional-Commits-like style; Chinese or English is acceptable.
+- PRs: include a concise description, affected packages, and any breaking changes. If UI changes are visible, add screenshots. Link issues when they exist, but it’s not required here.
 
-## 🛠 协作工作流
-
-1. **设计定义 (Single Source of Truth)**: 修改设计规范时，**必须先更新** `ling-design-tokens-skill/references` 中的文档（Markdown）。
-2. **配置同步 (Code Implementation)**: 文档更新后，**同步更新** `packages/config` 中的配置，确保代码与文档一致。
-3. **代码实现**: 组件工程师在 `apps/` 或 `packages/` 中引用 `packages/config` 定义的 Token 实现 UI。
-4. **验证**: 确保 UI 实现与设计定义严格一致。
-
----
-*此文件旨在定义 AI 协作时的角色分工，提升开发效率与规范性。*
+## Design Tokens Workflow (Project-Specific)
+When changing design tokens:
+1) Update `ling-design-tokens-skill/references` docs first.
+2) Sync changes into `packages/config`.
+3) Consume tokens from `packages/config` in components/apps.

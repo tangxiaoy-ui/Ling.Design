@@ -12,7 +12,8 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./src/components/icons/meta": "./src/components/icons/meta.ts"
   },
   "scripts": {
     "build": "tsup && pnpm run build:css",

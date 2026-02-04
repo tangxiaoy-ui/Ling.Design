@@ -293,7 +293,7 @@ export function ComponentsPage() {
           <div className="space-y-4 mb-20">
             <h2 className="text-xl font-semibold">最新组件: Header</h2>
             <div className="rounded-xl border border-border bg-background shadow-sm overflow-hidden">
-              <Header />
+              <BusinessHeader />
             </div>
           </div>
 
@@ -892,7 +892,7 @@ export function ComponentsPage() {
             <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm h-[800px] relative transform scale-[0.8] origin-top-left w-[125%]">
               <StandardPage 
                 // Global Layout
-                header={<Header variant="portal" mode="dark" />}
+                header={<BusinessHeader variant="portal" mode="dark" />}
                 sidebar={
                   <Sidebar 
                     items={sidebarItems} 
