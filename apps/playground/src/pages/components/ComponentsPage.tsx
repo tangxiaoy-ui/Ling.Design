@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Button, Header, Sidebar, PageHeader, ListToolbar, Pagination, Table, Badge, Switch, Input, DataNav, StandardPage, ChartHistogram as LayoutGrid, Folder, File as FileText, Setting as Settings, ChartHistogram as BarChart, BookMark as BookOpen, type TableColumn, type DataNavItem } from "@ling-design/core"
 import { SidebarLayout, SidebarItem } from "../../components/layout/SidebarLayout"
+import { BusinessHeader } from "../../components/blocks/BusinessHeader"
 
 const componentDependencies: Record<string, { name: string, desc: string }[]> = {
   "ListToolbar": [
@@ -532,41 +533,14 @@ export function ComponentsPage() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">使用场景</h2>
               
-              <div className="space-y-8">
-                {/* Admin Variant */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-lg">后台管理 (Admin)</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">variant="admin"</code>
-                  </div>
-                  <p className="text-sm text-muted-foreground">适用于管理后台系统，使用固定的品牌蓝背景 (#4285F4)，传达专业与稳重感，不随主题色变化。</p>
-                  <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
-                    <Header variant="admin" />
-                  </div>
+              <div className="flex flex-col gap-4">
+                <div className="p-4 rounded-lg border bg-gray-50 dark:bg-zinc-900/50">
+                  <h4 className="text-sm font-medium mb-3">Portal Mode (Default)</h4>
+                  <BusinessHeader variant="portal" mode="dark" />
                 </div>
-
-                {/* Portal Dark Variant */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-lg">门户 - 深色/主题色 (Portal Dark)</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">variant="portal" mode="dark"</code>
-                  </div>
-                  <p className="text-sm text-muted-foreground">适用于门户首页或强品牌感页面，背景使用当前主题的主色 (Primary Color)。</p>
-                  <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
-                    <Header variant="portal" mode="dark" />
-                  </div>
-                </div>
-
-                {/* Portal Light Variant */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-lg">门户 - 浅色 (Portal Light)</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">variant="portal" mode="light"</code>
-                  </div>
-                  <p className="text-sm text-muted-foreground">适用于内容密集型页面或需要清爽视觉的场景，使用白色背景。</p>
-                  <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
-                    <Header variant="portal" mode="light" />
-                  </div>
+                <div className="p-4 rounded-lg border bg-gray-50 dark:bg-zinc-900/50">
+                  <h4 className="text-sm font-medium mb-3">Admin Mode</h4>
+                  <BusinessHeader variant="admin" />
                 </div>
               </div>
             </div>
