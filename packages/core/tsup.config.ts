@@ -9,4 +9,5 @@ export default defineConfig({
   clean: true,
   treeshake: true,
   external: ["react", "react-dom"],
+  onSuccess: "pnpm run build:css",
 })
