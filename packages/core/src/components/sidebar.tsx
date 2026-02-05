@@ -1,6 +1,6 @@
 import * as React from "react"
 import { cn } from "@ling-design/utils"
-import { ArrowDown as ChevronDown, ArrowRight as ChevronRight, ChartHistogram as LayoutGrid, ArrowLeft as PanelLeftClose, ArrowRight as PanelLeftOpen } from "./icons"
+import { ArrowDown as ChevronDown, ChartHistogram as LayoutGrid, LeftOpen, LeftPackup } from "./icons"
 
 export interface SidebarItem {
   key: string
@@ -65,6 +65,7 @@ export function Sidebar({
         child.key === internalActiveKey || (child.children && isChildActive(child.children))
       )
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const isParentActive = hasChildren && isChildActive(item.children!)
 
     return (
@@ -141,7 +142,7 @@ export function Sidebar({
           onClick={() => onCollapse && onCollapse(!collapsed)}
           className="p-1 rounded-md hover:bg-muted text-muted-foreground transition-colors ml-auto"
         >
-          {collapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
+          {collapsed ? <LeftOpen size={18} /> : <LeftPackup size={18} />}
         </button>
       </div>
 

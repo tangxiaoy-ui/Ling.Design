@@ -34,6 +34,8 @@ const createIcon = (path: React.ReactNode, displayName: string) => {
   Icon.displayName = displayName
   return Icon
 }
+
+export * from "./meta"
 `;
 
 let content = HEADER + '\n';

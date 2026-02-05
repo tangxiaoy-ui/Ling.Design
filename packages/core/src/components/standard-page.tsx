@@ -1,12 +1,12 @@
 import * as React from "react"
 import { cn } from "@ling-design/utils"
 import { Header } from "./header"
-import { Sidebar, SidebarProps } from "./sidebar"
-import { PageHeader, PageHeaderProps } from "./page-header"
-import { DataNav, DataNavProps } from "./data-nav"
-import { ListToolbar, ListToolbarProps } from "./list-toolbar"
-import { Pagination, PaginationProps } from "./pagination"
-import { Table, TableProps } from "./table"
+import type { SidebarProps } from "./sidebar"
+import { PageHeader, type PageHeaderProps } from "./page-header"
+import { DataNav, type DataNavProps } from "./data-nav"
+import { ListToolbar, type ListToolbarProps } from "./list-toolbar"
+import { Pagination, type PaginationProps } from "./pagination"
+import { Table, type TableProps } from "./table"
 
 export interface StandardPageProps extends React.HTMLAttributes<HTMLDivElement> {
   // Global Layout
@@ -80,7 +80,7 @@ export function StandardPage({
           </div>
           
           {/* Main Card Container */}
-          <div className="flex-1 flex flex-col overflow-hidden bg-background rounded-lg shadow-sm border border-border">
+          <div className="flex-1 flex flex-col overflow-hidden bg-background rounded-lg shadow-sm">
             {/* Level 2 Menu: Secondary Nav */}
             {showLevel2Menu && (
               <div className="flex-shrink-0 px-6 border-b border-border">

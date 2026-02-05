@@ -45,10 +45,55 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "指示类",
     "description": "箭头上"
   },
+  "batch-add": {
+    "name": "BatchAdd",
+    "category": "操作类",
+    "description": "批量添加"
+  },
+  "batch-delete": {
+    "name": "BatchDelete",
+    "category": "操作类",
+    "description": "批量删除"
+  },
   "book-mark": {
     "name": "BookMark",
     "category": "通用类",
     "description": "书签, 标记"
+  },
+  "btn-add": {
+    "name": "BtnAdd",
+    "category": "操作类",
+    "description": "按钮添加"
+  },
+  "btn-change": {
+    "name": "BtnChange",
+    "category": "操作类",
+    "description": "按钮改变"
+  },
+  "btn-delete": {
+    "name": "BtnDelete",
+    "category": "操作类",
+    "description": "按钮删除"
+  },
+  "btn-fold": {
+    "name": "BtnFold",
+    "category": "操作类",
+    "description": "按钮收起"
+  },
+  "btn-more": {
+    "name": "BtnMore",
+    "category": "操作类",
+    "description": "按钮, 更多"
+  },
+  "btn-play": {
+    "name": "BtnPlay",
+    "category": "操作类",
+    "description": "按钮播放, 开启"
+  },
+  "btn-unfold": {
+    "name": "BtnUnfold",
+    "category": "操作类",
+    "description": "按钮展开"
   },
   "bug": {
     "name": "Bug",
@@ -59,6 +104,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Calendar",
     "category": "通用类",
     "description": "日历, 日程, 值班"
+  },
+  "change": {
+    "name": "Change",
+    "category": "操作类",
+    "description": "更换, 替换"
   },
   "chart-histogram": {
     "name": "ChartHistogram",
@@ -84,6 +134,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Confirm",
     "category": "通用类",
     "description": "人员, 个人确认"
+  },
+  "copy": {
+    "name": "Copy",
+    "category": "操作类",
+    "description": "复制"
   },
   "cross": {
     "name": "Cross",
@@ -120,6 +175,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "日期时间"
   },
+  "delete": {
+    "name": "Delete",
+    "category": "操作类",
+    "description": "垃圾桶, 删除"
+  },
   "dialogue": {
     "name": "Dialogue",
     "category": "通用类",
@@ -135,6 +195,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "指示类",
     "description": "方向, 右上, 跳转"
   },
+  "download": {
+    "name": "Download",
+    "category": "操作类",
+    "description": "下载"
+  },
   "earth": {
     "name": "Earth",
     "category": "通用类",
@@ -144,6 +209,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Earthset",
     "category": "通用类",
     "description": "地球, 设置语言"
+  },
+  "edit": {
+    "name": "Edit",
+    "category": "操作类",
+    "description": "笔, 编辑, 自定义"
   },
   "emoticon": {
     "name": "Emoticon",
@@ -160,6 +230,26 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "委托, 借用, 全部借用"
   },
+  "erase": {
+    "name": "Erase",
+    "category": "操作类",
+    "description": "橡皮擦, 擦除"
+  },
+  "exchange-ud": {
+    "name": "ExchangeUd",
+    "category": "操作类",
+    "description": "交换, 排序"
+  },
+  "exchange-udinverted-order": {
+    "name": "ExchangeUdinvertedOrder",
+    "category": "操作类",
+    "description": "交换, 排序, 倒序"
+  },
+  "exchange-udorder": {
+    "name": "ExchangeUdorder",
+    "category": "操作类",
+    "description": "交换, 排序, 顺序"
+  },
   "exclamatory": {
     "name": "Exclamatory",
     "category": "指示类",
@@ -174,6 +264,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Experiment",
     "category": "通用类",
     "description": "实验, 研发"
+  },
+  "extport": {
+    "name": "Extport",
+    "category": "操作类",
+    "description": "导出"
   },
   "file": {
     "name": "File",
@@ -215,6 +310,31 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "文件夹, 打开"
   },
+  "full-screen": {
+    "name": "FullScreen",
+    "category": "操作类",
+    "description": "全屏"
+  },
+  "full-screen-exit": {
+    "name": "FullScreenExit",
+    "category": "操作类",
+    "description": "全屏退出"
+  },
+  "funnel": {
+    "name": "Funnel",
+    "category": "操作类",
+    "description": "漏斗, 筛选, 过滤"
+  },
+  "half-screen": {
+    "name": "HalfScreen",
+    "category": "操作类",
+    "description": "半屏"
+  },
+  "half-screen-exit": {
+    "name": "HalfScreenExit",
+    "category": "操作类",
+    "description": "半屏退出"
+  },
   "heart": {
     "name": "Heart",
     "category": "通用类",
@@ -240,10 +360,20 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "家, 首页"
   },
+  "import": {
+    "name": "Import",
+    "category": "操作类",
+    "description": "导入"
+  },
   "information": {
     "name": "Information",
     "category": "指示类",
     "description": "信息"
+  },
+  "input": {
+    "name": "IconInput",
+    "category": "操作类",
+    "description": "输入"
   },
   "keys": {
     "name": "Keys",
@@ -259,6 +389,16 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Lampbulb",
     "category": "通用类",
     "description": "灯泡, 创意, 想法"
+  },
+  "left-open": {
+    "name": "LeftOpen",
+    "category": "操作类",
+    "description": "左侧展开"
+  },
+  "left-packup": {
+    "name": "LeftPackup",
+    "category": "操作类",
+    "description": "左侧收起"
   },
   "level-children": {
     "name": "LevelChildren",
@@ -315,10 +455,25 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "标志, 微信"
   },
+  "logout": {
+    "name": "Logout",
+    "category": "操作类",
+    "description": "帐号登出, 退出"
+  },
   "meeting-room": {
     "name": "MeetingRoom",
     "category": "通用类",
     "description": "会议室, 项目看板"
+  },
+  "menu-list": {
+    "name": "MenuList",
+    "category": "操作类",
+    "description": "菜单列表"
+  },
+  "menu-list-select": {
+    "name": "MenuListSelect",
+    "category": "操作类",
+    "description": "菜单列表, 选择"
   },
   "message": {
     "name": "Message",
@@ -330,10 +485,25 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "追评, 追加, 评论"
   },
+  "more-hor": {
+    "name": "MoreHor",
+    "category": "操作类",
+    "description": "更多"
+  },
+  "more-ver": {
+    "name": "MoreVer",
+    "category": "操作类",
+    "description": "更多"
+  },
   "none": {
     "name": "None",
     "category": "指示类",
     "description": "无, 空, 禁用, 取消"
+  },
+  "output": {
+    "name": "Output",
+    "category": "操作类",
+    "description": "输出"
   },
   "page": {
     "name": "Page",
@@ -350,6 +520,21 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "画板"
   },
+  "parameter-setting": {
+    "name": "ParameterSetting",
+    "category": "操作类",
+    "description": "配置, 参数设置"
+  },
+  "paste": {
+    "name": "Paste",
+    "category": "操作类",
+    "description": "粘贴"
+  },
+  "pause": {
+    "name": "Pause",
+    "category": "操作类",
+    "description": "播控, 暂停"
+  },
   "pc": {
     "name": "Pc",
     "category": "通用类",
@@ -364,6 +549,11 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Place",
     "category": "通用类",
     "description": "地点"
+  },
+  "play": {
+    "name": "Play",
+    "category": "操作类",
+    "description": "播控, 播放"
   },
   "pound": {
     "name": "Pound",
@@ -380,6 +570,26 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "指示类",
     "description": "问号, 问题"
   },
+  "quote": {
+    "name": "Quote",
+    "category": "操作类",
+    "description": "连接, 引用, 关联"
+  },
+  "quote-small": {
+    "name": "QuoteSmall",
+    "category": "操作类",
+    "description": "连接, 引用, 关联"
+  },
+  "refresh": {
+    "name": "Refresh",
+    "category": "操作类",
+    "description": "刷新"
+  },
+  "release": {
+    "name": "Release",
+    "category": "操作类",
+    "description": "发布"
+  },
   "restore-default": {
     "name": "RestoreDefault",
     "category": "通用类",
@@ -390,10 +600,20 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "尺, 直尺, 尺寸, 大小"
   },
+  "save": {
+    "name": "Save",
+    "category": "操作类",
+    "description": "存档, 保存"
+  },
   "seal": {
     "name": "Seal",
     "category": "通用类",
     "description": "盖章, 公章, 审核, 审批"
+  },
+  "search": {
+    "name": "Search",
+    "category": "操作类",
+    "description": "搜索, 查询"
   },
   "setting": {
     "name": "Setting",
@@ -405,15 +625,35 @@ export const iconsMeta: Record<string, IconMeta> = {
     "category": "通用类",
     "description": "短整行"
   },
+  "shutdown": {
+    "name": "Shutdown",
+    "category": "操作类",
+    "description": "关机, 停用"
+  },
   "sign-cross": {
     "name": "SignCross",
     "category": "指示类",
     "description": "失败, 关闭, 错误"
   },
+  "sign-equal": {
+    "name": "SignEqual",
+    "category": "操作类",
+    "description": "符号, 等号, 拖拽"
+  },
   "sign-exclamatory": {
     "name": "SignExclamatory",
     "category": "指示类",
     "description": "感叹号, 警告, 错误, 提示"
+  },
+  "sign-minus": {
+    "name": "SignMinus",
+    "category": "操作类",
+    "description": "符号, 减号"
+  },
+  "sign-plus": {
+    "name": "SignPlus",
+    "category": "操作类",
+    "description": "符号, 加号"
   },
   "sign-pound": {
     "name": "SignPound",
@@ -424,6 +664,46 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "SignTick",
     "category": "指示类",
     "description": "成功, 勾选, 完成"
+  },
+  "signin": {
+    "name": "Signin",
+    "category": "操作类",
+    "description": "帐号登录, 进入"
+  },
+  "sort": {
+    "name": "Sort",
+    "category": "操作类",
+    "description": "排序"
+  },
+  "sort-drag": {
+    "name": "SortDrag",
+    "category": "操作类",
+    "description": "拖拽, 排序"
+  },
+  "sort-filter-down": {
+    "name": "SortFilterDown",
+    "category": "操作类",
+    "description": "筛选, 排序, 降序"
+  },
+  "sort-filter-up": {
+    "name": "SortFilterUp",
+    "category": "操作类",
+    "description": "筛选, 排序, 升序"
+  },
+  "sort-inverted-order": {
+    "name": "SortInvertedOrder",
+    "category": "操作类",
+    "description": "排序, 倒叙"
+  },
+  "sort-order": {
+    "name": "SortOrder",
+    "category": "操作类",
+    "description": "排序, 顺序"
+  },
+  "stop": {
+    "name": "Stop",
+    "category": "操作类",
+    "description": "播控, 停止"
   },
   "string-type-big-decimal": {
     "name": "StringTypeBigDecimal",
@@ -524,6 +804,16 @@ export const iconsMeta: Record<string, IconMeta> = {
     "name": "Unlock",
     "category": "通用类",
     "description": "锁, 解锁, 权限"
+  },
+  "upload": {
+    "name": "Upload",
+    "category": "操作类",
+    "description": "上传"
+  },
+  "use": {
+    "name": "Use",
+    "category": "操作类",
+    "description": "使用"
   },
   "user": {
     "name": "User",

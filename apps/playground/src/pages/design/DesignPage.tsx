@@ -2,6 +2,7 @@ import * as React from "react"
 import { SidebarLayout } from "../../components/layout/SidebarLayout"
 import { designTokens } from "../../data/tokens"
 import { TokenTable } from "../../components/design/TokenTable"
+import { SignTick, Cloud, Diamond } from "@ling-design/core"
 
 export function DesignPage() {
   const [activeId, setActiveId] = React.useState("#intro")
@@ -76,27 +77,21 @@ export function DesignPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6 rounded-2xl bg-ling-gray-f8 space-y-3">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <SignTick className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold">确定性</h3>
               <p className="text-ling-gray-666 text-sm">保持设计意图的一致性，通过严谨的逻辑推导和规范约束，消除用户在使用过程中的不确定感。</p>
             </div>
             <div className="p-6 rounded-2xl bg-ling-gray-f8 space-y-3">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <Cloud className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold">自然</h3>
               <p className="text-ling-gray-666 text-sm">追求自然的视觉体验和交互反馈，减少认知负担，让用户在直觉中完成操作。</p>
             </div>
             <div className="p-6 rounded-2xl bg-ling-gray-f8 space-y-3">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+                <Diamond className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold">简洁</h3>
               <p className="text-ling-gray-666 text-sm">去除冗余信息，聚焦核心任务。通过清晰的视觉层级和高效的内容组织，提升整体效率。</p>
