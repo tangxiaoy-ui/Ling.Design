@@ -91,7 +91,7 @@ export function SidebarLayout({ items, children, title, description, activeItem,
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.href)}
                   className={cn(
-                    "group flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-foreground",
+                    "group flex w-full items-center rounded-md px-3 py-2 text-sm transition-colors hover:bg-muted hover:text-foreground",
                     currentActiveId === item.href.replace('#', '') 
                       ? "bg-secondary text-primary" 
                       : "text-muted-foreground"
@@ -108,7 +108,7 @@ export function SidebarLayout({ items, children, title, description, activeItem,
                         href={subItem.href}
                         onClick={(e) => handleLinkClick(e, subItem.href)}
                         className={cn(
-                          "group flex w-full items-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:text-foreground",
+                          "group flex w-full items-center rounded-md px-3 py-1.5 text-sm transition-colors hover:text-foreground",
                           currentActiveId === subItem.href.replace('#', '')
                             ? "text-primary"
                             : "text-muted-foreground"

@@ -7,6 +7,7 @@ import { DataNav, type DataNavProps } from "./data-nav"
 import { ListToolbar, type ListToolbarProps } from "./list-toolbar"
 import { Pagination, type PaginationProps } from "./pagination"
 import { Table, type TableProps } from "./table"
+import { NavTabs } from "./nav-tabs"
 
 export interface StandardPageProps extends React.HTMLAttributes<HTMLDivElement> {
   // Global Layout
@@ -82,37 +83,18 @@ export function StandardPage({
           {/* Main Card Container */}
           <div className="flex-1 flex flex-col overflow-hidden bg-background rounded-lg shadow-sm">
             {/* Level 2 Menu: Secondary Nav */}
-            {showLevel2Menu && (
-              <div className="flex-shrink-0 px-6 border-b border-border">
-                {level2Menu || (
-                  <div className="flex items-center gap-8 h-10">
-                     <button className="text-sm font-medium text-primary border-b-2 border-primary h-full px-1">
-                       标题一
-                     </button>
-                     <button className="text-sm font-medium text-muted-foreground hover:text-foreground h-full px-1">
-                       标题一
-                     </button>
-                     <button className="text-sm font-medium text-muted-foreground hover:text-foreground h-full px-1">
-                       标题一
-                     </button>
-                     <button className="text-sm font-medium text-muted-foreground hover:text-foreground h-full px-1">
-                       标题一
-                     </button>
-                  </div>
-                )}
+            {showLevel2Menu && level2Menu && (
+              <div className="flex-shrink-0 border-b border-border">
+                {level2Menu}
               </div>
             )}
             
             {/* Content Body */}
             <div className="flex-1 flex overflow-hidden">
               {/* Left Data Nav */}
-              {showDataNav && (
+              {showDataNav && dataNavProps?.items && dataNavProps.items.length > 0 && (
                 <div className="flex-shrink-0 border-r border-border h-full overflow-y-auto">
-                   {dataNavProps ? (
-                     <DataNav {...dataNavProps} className="h-full shadow-none border-0" />
-                   ) : (
-                     <DataNav items={[]} title="数据导航" width={240} className="h-full shadow-none border-0" />
-                   )}
+                  <DataNav {...dataNavProps} className="h-full shadow-none border-0" />
                 </div>
               )}
               

@@ -1,6 +1,8 @@
 import * as React from "react"
 import { cn } from "@ling-design/utils"
 
+import { NavTabs } from "./nav-tabs"
+
 export interface PageHeaderTab {
   key: string
   label: string
@@ -27,23 +29,13 @@ export function PageHeader({
   showExtra = true,
   ...props
 }: PageHeaderProps) {
-  const [internalActiveTab, setInternalActiveTab] = React.useState<string>(
-    activeTab || (tabs.length > 0 ? tabs[0].key : "")
-  )
-
-  React.useEffect(() => {
-    if (activeTab !== undefined) {
-      setInternalActiveTab(activeTab)
-    }
-  }, [activeTab])
-
-  const handleTabClick = (key: string) => {
-    if (onTabChange) {
-      onTabChange(key)
-    } else {
-      setInternalActiveTab(key)
-    }
-  }
+  // Map PageHeader tabs to NavTabs items
+  const navItems = React.useMemo(() => {
+    return tabs.map((tab) => ({
+      label: tab.label,
+      value: tab.key,
+    }))
+  }, [tabs])
 
   return (
     <div
@@ -61,28 +53,14 @@ export function PageHeader({
 
         {/* Tabs - Optional & Toggleable */}
         {showTabs && tabs.length > 0 && (
-          <div className="flex items-center gap-6 h-full pt-1">
-            {tabs.map((tab) => {
-              const isActive = internalActiveTab === tab.key
-              return (
-                <div
-                  key={tab.key}
-                  className={cn(
-                    "relative h-full flex items-center cursor-pointer text-sm transition-colors px-1",
-                    isActive
-                      ? "text-primary font-medium"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                  onClick={() => handleTabClick(tab.key)}
-                >
-                  {tab.label}
-                  {isActive && (
-                    <div className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-primary" />
-                  )}
-                </div>
-              )
-            })}
-          </div>
+          <NavTabs
+            items={navItems}
+            value={activeTab}
+            defaultValue={tabs[0]?.key}
+            onValueChange={onTabChange}
+            variant="line"
+            className="h-full border-b-0"
+          />
         )}
       </div>
 

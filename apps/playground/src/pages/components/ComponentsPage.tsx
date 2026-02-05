@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button, Header, Sidebar, PageHeader, ListToolbar, Pagination, Table, Badge, Switch, Input, DataNav, StandardPage, ChartHistogram as LayoutGrid, Folder, File as FileText, Setting as Settings, ChartHistogram as BarChart, BookMark as BookOpen, type TableColumn, type DataNavItem } from "@ling-design/core"
+import { Button, Header, Sidebar, PageHeader, ListToolbar, Pagination, Table, Badge, Switch, Input, DataNav, StandardPage, NavTabs, ChartHistogram as LayoutGrid, Folder, File as FileText, Setting as Settings, ChartHistogram as BarChart, BookMark as BookOpen, type TableColumn, type DataNavItem } from "@ling-design/core"
 import { SidebarLayout, SidebarItem } from "../../components/layout/SidebarLayout"
 import { BusinessHeader } from "../../components/blocks/BusinessHeader"
 
@@ -12,11 +12,13 @@ const componentDependencies: Record<string, { name: string, desc: string }[]> = 
     { name: "Header", desc: "全局页头" },
     { name: "Sidebar", desc: "侧边导航" },
     { name: "PageHeader", desc: "内容区页头" },
+    { name: "NavTabs", desc: "二级导航" },
     { name: "DataNav", desc: "左侧数据导航" },
     { name: "ListToolbar", desc: "列表操作栏" },
     { name: "Table", desc: "数据列表" },
     { name: "Pagination", desc: "分页" }
   ],
+  "NavTabs": [],
   "Table": [
     { name: "Badge", desc: "状态徽标" },
     { name: "Switch", desc: "开关列" },
@@ -74,6 +76,7 @@ export function ComponentsPage() {
       title: "通用",
       items: [
         { name: "Button", desc: "按钮", status: "Done" },
+        { name: "NavTabs", desc: "页签导航", status: "New" },
         { name: "Badge", desc: "徽标", status: "New" },
         { name: "Switch", desc: "开关", status: "New" },
       ]
@@ -407,6 +410,16 @@ export function ComponentsPage() {
                           <div className="flex gap-2">
                             <Button size="sm">Primary</Button>
                           </div>
+                        ) : item.name === 'NavTabs' ? (
+                          <div className="scale-75 origin-center">
+                            <NavTabs
+                              items={[
+                                { label: "Tab 1", value: "1" },
+                                { label: "Tab 2", value: "2" },
+                              ]}
+                              defaultValue="1"
+                            />
+                          </div>
                         ) : item.name === 'Badge' ? (
                           <div className="flex gap-2">
                             <Badge>Badge</Badge>
@@ -529,6 +542,90 @@ export function ComponentsPage() {
                </div>
             </div>
             {renderDependencies("Button")}
+          </div>
+        </div>
+      )}
+
+      {activeId === "#NavTabs" && (
+        <div className="space-y-8 animate-in fade-in duration-500">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">NavTabs</h1>
+            <p className="text-muted-foreground text-lg">页签导航，用于在不同视图间切换。</p>
+          </div>
+          
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">基础样式 (Line)</h2>
+              <div className="rounded-xl border border-border bg-background p-10 flex flex-col items-center gap-8 justify-center min-h-[100px]">
+                <NavTabs
+                  items={[
+                    { label: "标题一", value: "tab1" },
+                    { label: "标题一", value: "tab2" },
+                    { label: "标题一", value: "tab3" },
+                    { label: "标题一", value: "tab4" },
+                    { label: "标题一", value: "tab5" },
+                  ]}
+                  defaultValue="tab1"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">卡片样式 (Card)</h2>
+              <div className="rounded-xl border border-border bg-background p-10 flex flex-col items-center gap-8 justify-center min-h-[100px]">
+                <NavTabs
+                  variant="card"
+                  items={[
+                    { label: "标题一", value: "tab1" },
+                    { label: "标题一", value: "tab2" },
+                    { label: "标题一", value: "tab3" },
+                    { label: "标题一", value: "tab4" },
+                    { label: "标题一", value: "tab5" },
+                  ]}
+                  defaultValue="tab1"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">垂直样式 (Vertical)</h2>
+              <div className="rounded-xl border border-border bg-background overflow-hidden flex min-h-[200px]">
+                <div className="w-64 border-r border-border bg-white py-4">
+                  <NavTabs
+                    variant="vertical"
+                    items={[
+                      { label: "标题一", value: "tab1" },
+                      { label: "标题一", value: "tab2" },
+                      { label: "标题一", value: "tab3" },
+                      { label: "标题一", value: "tab4" },
+                    ]}
+                    defaultValue="tab1"
+                  />
+                </div>
+                <div className="flex-1 p-8 bg-muted/10">
+                  <div className="h-full rounded-lg border border-dashed border-gray-200 flex items-center justify-center text-muted-foreground">
+                    Content Area
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">按钮样式 (Button)</h2>
+              <div className="rounded-xl border border-border bg-background p-10 flex flex-col items-center gap-8 justify-center min-h-[100px]">
+                <NavTabs
+                  variant="button"
+                  items={[
+                    { label: "选项1", value: "tab1" },
+                    { label: "选项2", value: "tab2" },
+                    { label: "选项3", value: "tab3" },
+                  ]}
+                  defaultValue="tab1"
+                />
+              </div>
+            </div>
+
+            {renderDependencies("NavTabs")}
           </div>
         </div>
       )}
@@ -1117,6 +1214,17 @@ export function ComponentsPage() {
                 showDataNav={showDataNav}
                 showLevel1Menu={showLevel1Menu}
                 showLevel2Menu={showLevel2Menu}
+                level2Menu={
+                  <NavTabs
+                    variant="card"
+                    items={[
+                      { label: "标题一", value: "tab1" },
+                      { label: "标题一", value: "tab2" },
+                      { label: "标题一", value: "tab3" },
+                      { label: "标题一", value: "tab4" },
+                    ]}
+                  />
+                }
                 showToolbarIcons={showToolbarIcons}
                 
                 // Component Props
