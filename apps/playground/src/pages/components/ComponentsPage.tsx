@@ -48,6 +48,27 @@ export function ComponentsPage() {
   const [showLevel2Menu, setShowLevel2Menu] = useState(true)
   const [showToolbarIcons, setShowToolbarIcons] = useState(true)
 
+  // Other components demo states
+  const [btnDisabled, setBtnDisabled] = useState(false)
+  const [switchDisabled, setSwitchDisabled] = useState(false)
+  const [inputDisabled, setInputDisabled] = useState(false)
+  const [phShowTabs, setPhShowTabs] = useState(true)
+  const [phShowExtra, setPhShowExtra] = useState(true)
+  const [ltShowFilter, setLtShowFilter] = useState(true)
+  const [ltShowSort, setLtShowSort] = useState(true)
+  const [ltShowViewToggle, setLtShowViewToggle] = useState(true)
+  const [ltShowSettings, setLtShowSettings] = useState(true)
+  const [pgShowQuickJumper, setPgShowQuickJumper] = useState(true)
+  const [pgShowSizeChanger, setPgShowSizeChanger] = useState(true)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [stdPageSidebarCollapsed, setStdPageSidebarCollapsed] = useState(false)
+  
+  const [badgeOutline, setBadgeOutline] = useState(false)
+  const [headerIsPortal, setHeaderIsPortal] = useState(true)
+  const [tableBordered, setTableBordered] = useState(false)
+  const [tableStriped, setTableStriped] = useState(false)
+  const [dnShowSearch, setDnShowSearch] = useState(true)
+
   const components = [
     {
       title: "通用",
@@ -240,6 +261,69 @@ export function ComponentsPage() {
 
   const isOverview = activeId === "#overview"
 
+  const paramData = [
+    {
+      key: "showDataNav",
+      name: "showDataNav",
+      desc: "显示数据导航",
+      type: "boolean",
+      default: "true",
+      value: showDataNav,
+      setValue: setShowDataNav
+    },
+    {
+      key: "showLevel1Menu",
+      name: "showLevel1Menu",
+      desc: "显示一级菜单",
+      type: "boolean",
+      default: "true",
+      value: showLevel1Menu,
+      setValue: setShowLevel1Menu
+    },
+    {
+      key: "showLevel2Menu",
+      name: "showLevel2Menu",
+      desc: "显示二级菜单",
+      type: "boolean",
+      default: "true",
+      value: showLevel2Menu,
+      setValue: setShowLevel2Menu
+    },
+    {
+      key: "showToolbarIcons",
+      name: "showToolbarIcons",
+      desc: "显示操作栏图标",
+      type: "boolean",
+      default: "true",
+      value: showToolbarIcons,
+      setValue: setShowToolbarIcons
+    }
+  ]
+
+  const paramColumns: any[] = [
+    { title: "参数名", dataIndex: "name", width: 150 },
+    { title: "说明", dataIndex: "desc" },
+    { title: "类型", dataIndex: "type", width: 100 },
+    { title: "默认值", dataIndex: "default", width: 100 },
+    { 
+      title: "预览", 
+      dataIndex: "value", 
+      width: 100,
+      render: (val: boolean) => <span className="font-mono text-xs">{val ? "true" : "false"}</span>
+    },
+    {
+      title: "开关",
+      key: "switch",
+      width: 100,
+      render: (_: any, record: any) => (
+        <Switch 
+          checked={record.value} 
+          onCheckedChange={record.setValue} 
+        />
+      )
+    }
+  ]
+
   const renderDependencies = (componentName: string) => {
     const deps = componentDependencies[componentName]
     if (!deps || deps.length === 0) return null
@@ -398,13 +482,35 @@ export function ComponentsPage() {
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">预览</h2>
             <div className="rounded-xl border border-border bg-background p-10 flex flex-wrap items-center gap-4 justify-center min-h-[200px]">
-              <Button>Default</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="destructive">Destructive</Button>
-              <Button variant="link">Link</Button>
+              <Button disabled={btnDisabled}>Default</Button>
+              <Button variant="secondary" disabled={btnDisabled}>Secondary</Button>
+              <Button variant="outline" disabled={btnDisabled}>Outline</Button>
+              <Button variant="ghost" disabled={btnDisabled}>Ghost</Button>
+              <Button variant="destructive" disabled={btnDisabled}>Destructive</Button>
+              <Button variant="link" disabled={btnDisabled}>Link</Button>
             </div>
+            
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "disabled",
+                       name: "disabled",
+                       desc: "禁用状态",
+                       type: "boolean",
+                       default: "false",
+                       value: btnDisabled,
+                       setValue: setBtnDisabled
+                     }
+                   ]} 
+                  rowKey="key" 
+                />
+               </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-4">
                <div className="rounded-xl border border-border bg-background p-6 flex flex-col items-center gap-4">
                   <h3 className="text-sm font-medium text-muted-foreground mb-2">Sizes</h3>
@@ -465,24 +571,37 @@ export function ComponentsPage() {
             <div className="rounded-xl border border-border bg-background p-10 flex flex-wrap items-center gap-8 justify-center min-h-[200px]">
               <div className="flex flex-col items-center gap-2">
                 <span className="text-sm text-muted-foreground">Default</span>
-                <Switch />
+                <Switch disabled={switchDisabled} />
               </div>
               <div className="flex flex-col items-center gap-2">
                 <span className="text-sm text-muted-foreground">Checked</span>
-                <Switch defaultChecked />
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <span className="text-sm text-muted-foreground">Disabled</span>
-                <Switch disabled />
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <span className="text-sm text-muted-foreground">Disabled Checked</span>
-                <Switch disabled defaultChecked />
+                <Switch defaultChecked disabled={switchDisabled} />
               </div>
               <div className="flex flex-col items-center gap-2">
                 <span className="text-sm text-muted-foreground">Small</span>
-                <Switch size="sm" />
+                <Switch size="sm" disabled={switchDisabled} />
               </div>
+            </div>
+
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "disabled",
+                       name: "disabled",
+                       desc: "禁用状态",
+                       type: "boolean",
+                       default: "false",
+                       value: switchDisabled,
+                       setValue: setSwitchDisabled
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
             </div>
             {renderDependencies("Switch")}
           </div>
@@ -502,20 +621,37 @@ export function ComponentsPage() {
               <div className="rounded-xl border border-border bg-background p-10 flex flex-col gap-6 justify-center min-h-[200px] max-w-xl mx-auto">
                 <div className="space-y-2">
                    <label className="text-sm font-medium">基础输入框</label>
-                   <Input placeholder="请输入内容..." />
-                </div>
-                <div className="space-y-2">
-                   <label className="text-sm font-medium">禁用状态</label>
-                   <Input placeholder="禁止输入" disabled />
+                   <Input placeholder="请输入内容..." disabled={inputDisabled} />
                 </div>
                 <div className="space-y-2">
                    <label className="text-sm font-medium">不同尺寸</label>
                    <div className="flex flex-col gap-4">
-                     <Input placeholder="默认尺寸 (Default)" />
-                     <Input placeholder="小尺寸 (Small)" className="h-8 text-xs" />
+                     <Input placeholder="默认尺寸 (Default)" disabled={inputDisabled} />
+                     <Input placeholder="小尺寸 (Small)" className="h-8 text-xs" disabled={inputDisabled} />
                    </div>
                 </div>
               </div>
+
+              <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "disabled",
+                       name: "disabled",
+                       desc: "禁用状态",
+                       type: "boolean",
+                       default: "false",
+                       value: inputDisabled,
+                       setValue: setInputDisabled
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
+            </div>
             </div>
             {renderDependencies("Input")}
           </div>
@@ -531,19 +667,37 @@ export function ComponentsPage() {
           
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold">使用场景</h2>
+              <h2 className="text-xl font-semibold">预览</h2>
               
               <div className="flex flex-col gap-4">
                 <div className="p-4 rounded-lg border bg-gray-50 dark:bg-zinc-900/50">
-                  <h4 className="text-sm font-medium mb-3">Portal Mode (Default)</h4>
-                  <BusinessHeader variant="portal" mode="dark" />
-                </div>
-                <div className="p-4 rounded-lg border bg-gray-50 dark:bg-zinc-900/50">
-                  <h4 className="text-sm font-medium mb-3">Admin Mode</h4>
-                  <BusinessHeader variant="admin" />
+                  <h4 className="text-sm font-medium mb-3">Preview</h4>
+                  <BusinessHeader variant={headerIsPortal ? "portal" : "admin"} mode="dark" />
                 </div>
               </div>
             </div>
+
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "isPortal",
+                       name: "isPortal",
+                       desc: "门户模式",
+                       type: "boolean",
+                       default: "true",
+                       value: headerIsPortal,
+                       setValue: setHeaderIsPortal
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
+            </div>
+
             {renderDependencies("Header")}
           </div>
         </div>
@@ -564,12 +718,35 @@ export function ComponentsPage() {
                 title="门户管理" 
                 activeKey="assets-manage"
                 defaultOpenKeys={['assets']}
+                collapsed={sidebarCollapsed}
+                onCollapse={setSidebarCollapsed}
               />
               <div className="flex-1 bg-white p-8">
                 <div className="h-32 rounded-lg border border-dashed border-gray-200 bg-gray-50 flex items-center justify-center text-gray-400">
                   Content Area
                 </div>
               </div>
+            </div>
+
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "collapsed",
+                       name: "collapsed",
+                       desc: "收起状态",
+                       type: "boolean",
+                       default: "false",
+                       value: sidebarCollapsed,
+                       setValue: setSidebarCollapsed
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
             </div>
             {renderDependencies("Sidebar")}
           </div>
@@ -588,7 +765,6 @@ export function ComponentsPage() {
               <h2 className="text-xl font-semibold">预览</h2>
               <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
                 <div className="bg-white min-h-[200px] flex flex-col">
-                  {/* Example 1: Full features */}
                   <PageHeader 
                     title="分类规则检查" 
                     tabs={[
@@ -598,6 +774,8 @@ export function ComponentsPage() {
                       { key: '4', label: '标题一' },
                     ]}
                     activeTab="1"
+                    showTabs={phShowTabs}
+                    showExtra={phShowExtra}
                     extra={
                       <div className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer hover:text-[#4285F4]">
                         <BookOpen size={16} />
@@ -615,47 +793,34 @@ export function ComponentsPage() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold">状态展示</h2>
-              <div className="grid grid-cols-1 gap-6">
-                
-                {/* Variant: Hidden Tabs */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-sm text-muted-foreground">隐藏 Tab 菜单</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">showTabs={'{false}'}</code>
-                  </div>
-                  <div className="rounded-lg border border-border overflow-hidden">
-                    <PageHeader 
-                      title="分类规则检查" 
-                      tabs={[{ key: '1', label: '标题一' }]}
-                      showTabs={false}
-                      extra={<span className="text-sm text-[#4285F4]">新手引导</span>}
-                    />
-                  </div>
-                </div>
-
-                {/* Variant: Hidden Extra */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-sm text-muted-foreground">隐藏新手引导</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">showExtra={'{false}'}</code>
-                  </div>
-                  <div className="rounded-lg border border-border overflow-hidden">
-                    <PageHeader 
-                      title="分类规则检查" 
-                      tabs={[
-                        { key: '1', label: '标题一' },
-                        { key: '2', label: '标题一' },
-                      ]}
-                      activeTab="1"
-                      showExtra={false}
-                      extra={<span className="text-sm text-[#4285F4]">新手引导</span>}
-                    />
-                  </div>
-                </div>
-
-              </div>
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "showTabs",
+                       name: "showTabs",
+                       desc: "显示页签",
+                       type: "boolean",
+                       default: "true",
+                       value: phShowTabs,
+                       setValue: setPhShowTabs
+                     },
+                     {
+                       key: "showExtra",
+                       name: "showExtra",
+                       desc: "显示扩展区",
+                       type: "boolean",
+                       default: "true",
+                       value: phShowExtra,
+                       setValue: setPhShowExtra
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
             </div>
             {renderDependencies("PageHeader")}
           </div>
@@ -675,6 +840,10 @@ export function ComponentsPage() {
               <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
                 <div className="bg-white min-h-[200px] flex flex-col">
                   <ListToolbar 
+                    showFilter={ltShowFilter}
+                    showSort={ltShowSort}
+                    showViewToggle={ltShowViewToggle}
+                    showSettings={ltShowSettings}
                     actions={
                       <>
                         <Button size="sm">新建</Button>
@@ -694,49 +863,52 @@ export function ComponentsPage() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold">不同配置</h2>
-              <div className="grid grid-cols-1 gap-6">
-                
-                {/* Variant: Simple */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-sm text-muted-foreground">仅搜索和操作</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">showFilter={'{false}'} showSort={'{false}'}</code>
-                  </div>
-                  <div className="rounded-lg border border-border overflow-hidden">
-                    <ListToolbar 
-                      showFilter={false}
-                      showSort={false}
-                      showViewToggle={false}
-                      showSettings={false}
-                      actions={
-                        <Button size="sm">新建</Button>
-                      }
-                    />
-                  </div>
-                </div>
-
-                {/* Variant: Grid View Active */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-sm text-muted-foreground">卡片视图模式</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">viewMode="grid"</code>
-                  </div>
-                  <div className="rounded-lg border border-border overflow-hidden">
-                    <ListToolbar 
-                      viewMode="grid"
-                      actions={
-                        <>
-                          <Button size="sm">新建</Button>
-                          <Button size="sm" variant="outline">批量导出</Button>
-                        </>
-                      }
-                    />
-                  </div>
-                </div>
-
-              </div>
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "showFilter",
+                       name: "showFilter",
+                       desc: "显示筛选",
+                       type: "boolean",
+                       default: "true",
+                       value: ltShowFilter,
+                       setValue: setLtShowFilter
+                     },
+                     {
+                       key: "showSort",
+                       name: "showSort",
+                       desc: "显示排序",
+                       type: "boolean",
+                       default: "true",
+                       value: ltShowSort,
+                       setValue: setLtShowSort
+                     },
+                     {
+                       key: "showViewToggle",
+                       name: "showViewToggle",
+                       desc: "显示视图切换",
+                       type: "boolean",
+                       default: "true",
+                       value: ltShowViewToggle,
+                       setValue: setLtShowViewToggle
+                     },
+                     {
+                       key: "showSettings",
+                       name: "showSettings",
+                       desc: "显示设置",
+                       type: "boolean",
+                       default: "true",
+                       value: ltShowSettings,
+                       setValue: setLtShowSettings
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
             </div>
             {renderDependencies("ListToolbar")}
           </div>
@@ -754,44 +926,43 @@ export function ComponentsPage() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">预览</h2>
               <div className="rounded-xl border border-border bg-background p-10 flex flex-col items-center gap-8 justify-center min-h-[200px]">
-                <Pagination total={500} defaultCurrent={1} />
+                <Pagination 
+                  total={500} 
+                  defaultCurrent={1} 
+                  showQuickJumper={pgShowQuickJumper}
+                  showSizeChanger={pgShowSizeChanger}
+                />
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold">状态展示</h2>
-              <div className="grid grid-cols-1 gap-6">
-                
-                {/* Variant: Hidden Jumper & SizeChanger */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-sm text-muted-foreground">基础分页 (隐藏跳页和每页条数)</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">showQuickJumper={'{false}'} showSizeChanger={'{false}'}</code>
-                  </div>
-                  <div className="rounded-lg border border-border p-6 flex justify-center bg-white">
-                    <Pagination 
-                      total={50} 
-                      showQuickJumper={false}
-                      showSizeChanger={false}
-                    />
-                  </div>
-                </div>
-
-                {/* Variant: Many Pages */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-medium text-sm text-muted-foreground">多页码</h3>
-                    <code className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">total={'{1000}'}</code>
-                  </div>
-                  <div className="rounded-lg border border-border p-6 flex justify-center bg-white">
-                    <Pagination 
-                      total={1000} 
-                      defaultCurrent={6}
-                    />
-                  </div>
-                </div>
-
-              </div>
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "showQuickJumper",
+                       name: "showQuickJumper",
+                       desc: "显示快速跳转",
+                       type: "boolean",
+                       default: "true",
+                       value: pgShowQuickJumper,
+                       setValue: setPgShowQuickJumper
+                     },
+                     {
+                       key: "showSizeChanger",
+                       name: "showSizeChanger",
+                       desc: "显示页码切换",
+                       type: "boolean",
+                       default: "true",
+                       value: pgShowSizeChanger,
+                       setValue: setPgShowSizeChanger
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
             </div>
             {renderDependencies("Pagination")}
           </div>
@@ -821,6 +992,8 @@ export function ComponentsPage() {
                     <Table 
                       columns={tableColumns} 
                       dataSource={tableData} 
+                      bordered={tableBordered}
+                      striped={tableStriped}
                     />
                     <div className="flex justify-end">
                       <Pagination total={50} defaultCurrent={1} />
@@ -829,6 +1002,37 @@ export function ComponentsPage() {
                 </div>
               </div>
             </div>
+
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "bordered",
+                       name: "bordered",
+                       desc: "显示边框",
+                       type: "boolean",
+                       default: "false",
+                       value: tableBordered,
+                       setValue: setTableBordered
+                     },
+                     {
+                       key: "striped",
+                       name: "striped",
+                       desc: "斑马纹",
+                       type: "boolean",
+                       default: "false",
+                       value: tableStriped,
+                       setValue: setTableStriped
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
+            </div>
+
             {renderDependencies("Table")}
           </div>
         </div>
@@ -849,6 +1053,7 @@ export function ComponentsPage() {
                 width={280}
                 defaultOpenKeys={['2', '2-1', '2-1-1', '2-1-1-1']}
                 activeKey="2-1-1-1-1"
+                showSearch={dnShowSearch}
               />
               <div className="flex-1 bg-white p-8">
                 <div className="h-full rounded-lg border border-dashed border-gray-200 bg-gray-50 flex items-center justify-center text-gray-400">
@@ -856,6 +1061,28 @@ export function ComponentsPage() {
                 </div>
               </div>
             </div>
+
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table 
+                   columns={paramColumns} 
+                   dataSource={[
+                     {
+                       key: "showSearch",
+                       name: "showSearch",
+                       desc: "显示搜索",
+                       type: "boolean",
+                       default: "true",
+                       value: dnShowSearch,
+                       setValue: setDnShowSearch
+                     }
+                   ]} 
+                   rowKey="key" 
+                 />
+               </div>
+            </div>
+
             {renderDependencies("DataNav")}
           </div>
         </div>
@@ -869,25 +1096,6 @@ export function ComponentsPage() {
           </div>
           
           <div className="space-y-4">
-            <div className="flex items-center gap-6 p-4 bg-white border border-border rounded-lg shadow-sm">
-               <div className="flex items-center gap-2">
-                 <Switch checked={showDataNav} onCheckedChange={setShowDataNav} />
-                 <label className="text-sm font-medium">显示数据导航</label>
-               </div>
-               <div className="flex items-center gap-2">
-                 <Switch checked={showLevel1Menu} onCheckedChange={setShowLevel1Menu} />
-                 <label className="text-sm font-medium">显示一级菜单</label>
-               </div>
-               <div className="flex items-center gap-2">
-                 <Switch checked={showLevel2Menu} onCheckedChange={setShowLevel2Menu} />
-                 <label className="text-sm font-medium">显示二级菜单</label>
-               </div>
-               <div className="flex items-center gap-2">
-                 <Switch checked={showToolbarIcons} onCheckedChange={setShowToolbarIcons} />
-                 <label className="text-sm font-medium">显示操作栏图标</label>
-               </div>
-            </div>
-
             <h2 className="text-xl font-semibold">预览</h2>
             <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm h-[800px] relative transform scale-[0.8] origin-top-left w-[125%]">
               <StandardPage 
@@ -900,6 +1108,8 @@ export function ComponentsPage() {
                     activeKey="assets-manage"
                     defaultOpenKeys={['assets']}
                     className="h-full"
+                    collapsed={stdPageSidebarCollapsed}
+                    onCollapse={setStdPageSidebarCollapsed}
                   />
                 }
                 
@@ -948,6 +1158,14 @@ export function ComponentsPage() {
                 }}
               />
             </div>
+
+            <div className="mt-8">
+               <h3 className="text-lg font-semibold mb-4">参数配置</h3>
+               <div className="bg-white">
+                 <Table columns={paramColumns} dataSource={paramData} rowKey="key" />
+               </div>
+            </div>
+
             {renderDependencies("StandardPage")}
           </div>
         </div>

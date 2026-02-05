@@ -26,6 +26,7 @@ export interface DataNavProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   defaultOpenKeys?: string[]
   onSelect?: (key: string) => void
   width?: number | string
+  showSearch?: boolean
 }
 
 export function DataNav({
@@ -36,6 +37,7 @@ export function DataNav({
   defaultOpenKeys = [],
   onSelect,
   width = "100%",
+  showSearch = true,
   ...props
 }: DataNavProps) {
   const [openKeys, setOpenKeys] = React.useState<string[]>(defaultOpenKeys)
@@ -185,17 +187,19 @@ export function DataNav({
       </div>
 
       {/* Search */}
-      <div className="p-3">
-        <div className="relative">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input 
-            placeholder="请输入" 
-            className="pl-9 h-9 bg-muted/50 border-border focus:bg-card"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+      {showSearch && (
+        <div className="p-3">
+          <div className="relative">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input 
+              placeholder="请输入" 
+              className="pl-9 h-9 bg-muted/50 border-border focus:bg-card"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Tree List */}
       <div className="flex-1 overflow-y-auto py-2">

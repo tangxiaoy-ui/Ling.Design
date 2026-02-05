@@ -14,6 +14,8 @@ export interface TableProps<T = any> extends React.HTMLAttributes<HTMLTableEleme
   columns: TableColumn<T>[]
   dataSource: T[]
   rowKey?: string | ((record: T) => string)
+  bordered?: boolean
+  striped?: boolean
 }
 
 function Table<T = any>({
@@ -21,12 +23,20 @@ function Table<T = any>({
   columns,
   dataSource,
   rowKey = "id",
+  bordered = false,
+  striped = false,
   ...props
 }: TableProps<T>) {
   return (
-    <div className="w-full overflow-auto rounded-md border border-border">
+    <div className={cn(
+      "w-full overflow-auto rounded-md", 
+      bordered ? "border border-border" : ""
+    )}>
       <table className={cn("w-full caption-bottom text-sm text-left", className)} {...props}>
-        <thead className="bg-muted/50 border-b border-border">
+        <thead className={cn(
+          "bg-muted/50",
+          bordered ? "border-b border-border" : ""
+        )}>
           <tr className="hover:bg-transparent">
             {columns.map((column, index) => (
               <th
@@ -49,7 +59,11 @@ function Table<T = any>({
             return (
               <tr
                 key={key || rowIndex}
-                className="border-b border-border transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
+                className={cn(
+                  "transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+                  bordered ? "border-b border-border" : "border-b border-border/50",
+                  striped && rowIndex % 2 === 1 ? "bg-muted/20" : ""
+                )}
               >
                 {columns.map((column, colIndex) => {
                   const cellKey = column.key || String(column.dataIndex) || colIndex
@@ -60,7 +74,8 @@ function Table<T = any>({
                       className={cn(
                         "p-4 align-middle [&:has([role=checkbox])]:pr-0",
                         column.align === "center" && "text-center",
-                        column.align === "right" && "text-right"
+                        column.align === "right" && "text-right",
+                        bordered ? "border-r border-border last:border-r-0" : ""
                       )}
                     >
                       {column.render ? column.render(value, record, rowIndex) : (value as React.ReactNode)}

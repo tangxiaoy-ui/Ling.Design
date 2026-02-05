@@ -1,6 +1,8 @@
 import * as React from "react"
 import { cn } from "@ling-design/utils"
 
+export * from "./meta"
+
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   size?: number | string
 }
