@@ -69,6 +69,9 @@ export function ComponentsPage() {
   const [headerIsPortal, setHeaderIsPortal] = useState(true)
   const [tableBordered, setTableBordered] = useState(false)
   const [tableStriped, setTableStriped] = useState(false)
+  const [tableVariant, setTableVariant] = useState<string>("default")
+  const [tableShowSelector, setTableShowSelector] = useState(false)
+  const [tableSelectedKeys, setTableSelectedKeys] = useState<string[]>([])
   const [dnShowSearch, setDnShowSearch] = useState(true)
 
   const components = [
@@ -170,20 +173,20 @@ export function ComponentsPage() {
 
   // Mock data for Table preview
   const tableData = [
-    { id: 1, text: "文本值", operator: "赵玉", status: "draft", date: "2025-02-01 14:05" },
-    { id: 2, text: "文本值", operator: "钱泺西", status: "draft", date: "2025-02-01 14:05" },
-    { id: 3, text: "文本值", operator: "何卫军", status: "draft", date: "2025-02-01 14:05" },
-    { id: 4, text: "文本值", operator: "钱丽敏", status: "draft", date: "2025-02-01 14:05" },
-    { id: 5, text: "文本值", operator: "王海英", status: "draft", date: "2025-02-01 14:05" },
-    { id: 6, text: "文本值", operator: "何思琪", status: "draft", date: "2025-02-01 14:05" },
-    { id: 7, text: "文本值", operator: "王嘉畦", status: "draft", date: "2025-02-01 14:05" },
-    { id: 8, text: "文本值", operator: "冯靖宇", status: "draft", date: "2025-02-01 14:05" },
+    { id: 1, text: "文本值", operator: "赵玉", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" },
+    { id: 2, text: "文本值", operator: "钱泺西", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" },
+    { id: 3, text: "文本值", operator: "何卫军", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zai" },
+    { id: 4, text: "文本值", operator: "钱丽敏", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Molly" },
+    { id: 5, text: "文本值", operator: "王海英", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=John" },
+    { id: 6, text: "文本值", operator: "何思琪", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jane" },
+    { id: 7, text: "文本值", operator: "王嘉畦", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Bob" },
+    { id: 8, text: "文本值", operator: "冯靖宇", status: "draft", date: "2025-02-01 14:05", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alice" },
   ]
 
   const tableColumns: TableColumn<typeof tableData[0]>[] = [
     { title: "序号", dataIndex: "id", width: 60, align: "center" },
-    { title: "表头文本", dataIndex: "text" },
-    { title: "操作人", dataIndex: "operator" },
+    { title: "表头文本", dataIndex: "text", sortable: true },
+    { title: "操作人", dataIndex: "operator", sortable: true },
     { 
       title: "状态", 
       key: "status",
@@ -210,6 +213,36 @@ export function ComponentsPage() {
         </div>
       )
     }
+  ]
+
+  const timelineData = [
+    { id: 1, date: "2025-02-01 14:05", type: "开始", name: "项目启动", operator: "周妍玥" },
+    { id: 2, date: "2025-02-01 14:05", type: "审批", name: "需求审批", operator: "李萍" },
+    { id: 3, date: "2025-02-01 14:05", type: "开发", name: "功能开发", operator: "何仙超" },
+    { id: 4, date: "2025-02-01 14:05", type: "测试", name: "功能测试", operator: "王海英" },
+  ]
+
+  const timelineColumns: TableColumn<typeof timelineData[0]>[] = [
+    { title: "时间", dataIndex: "date", width: 160 },
+    { title: "节点类型", dataIndex: "type" },
+    { title: "节点名称", dataIndex: "name" },
+    { title: "操作者", dataIndex: "operator" },
+  ]
+
+  const avatarColumns: TableColumn<typeof tableData[0]>[] = [
+    { 
+      title: "用户", 
+      key: "avatar",
+      render: (_, record) => (
+        <div className="flex items-center gap-2">
+          <img src={record.avatar} alt="" className="w-6 h-6 rounded-full" />
+          <span>{record.operator}</span>
+        </div>
+      )
+    },
+    { title: "表头文本", dataIndex: "text" },
+    { title: "状态", dataIndex: "status", render: (_, record) => <Badge variant={record.status as any}>草稿</Badge> },
+    { title: "操作日期", dataIndex: "date" },
   ]
 
   // Mock data for DataNav preview
@@ -1074,7 +1107,81 @@ export function ComponentsPage() {
           
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold">预览</h2>
+              <h2 className="text-xl font-semibold">变体预览</h2>
+              
+              <div className="grid gap-6">
+                <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
+                  <div className="bg-muted/30 px-4 py-2 border-b border-border">
+                    <h3 className="font-semibold text-sm">默认表格 (Default)</h3>
+                  </div>
+                  <div className="bg-white p-6">
+                    <Table 
+                      columns={tableColumns.slice(0, 4)} 
+                      dataSource={tableData.slice(0, 3)}
+                      variant="default"
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
+                  <div className="bg-muted/30 px-4 py-2 border-b border-border">
+                    <h3 className="font-semibold text-sm">可排序表格 (Sortable)</h3>
+                  </div>
+                  <div className="bg-white p-6">
+                    <Table 
+                      columns={tableColumns.slice(0, 4)} 
+                      dataSource={tableData.slice(0, 3)}
+                      variant="sortable"
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
+                  <div className="bg-muted/30 px-4 py-2 border-b border-border">
+                    <h3 className="font-semibold text-sm">可选择表格 (Selectable)</h3>
+                  </div>
+                  <div className="bg-white p-6">
+                    <Table 
+                      columns={tableColumns.slice(0, 4)} 
+                      dataSource={tableData.slice(0, 3)}
+                      variant="selectable"
+                      showRowSelector={true}
+                      selectedRowKeys={tableSelectedKeys}
+                      onSelectionChange={setTableSelectedKeys}
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
+                  <div className="bg-muted/30 px-4 py-2 border-b border-border">
+                    <h3 className="font-semibold text-sm">带头像表格 (Avatar)</h3>
+                  </div>
+                  <div className="bg-white p-6">
+                    <Table 
+                      columns={avatarColumns} 
+                      dataSource={tableData.slice(0, 3)}
+                      variant="avatar"
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
+                  <div className="bg-muted/30 px-4 py-2 border-b border-border">
+                    <h3 className="font-semibold text-sm">时间线表格 (Timeline)</h3>
+                  </div>
+                  <div className="bg-white p-6">
+                    <Table 
+                      columns={timelineColumns} 
+                      dataSource={timelineData}
+                      variant="timeline"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold">完整示例</h2>
               <div className="rounded-xl border border-border bg-background overflow-hidden shadow-sm">
                 <div className="bg-white p-6">
                   <div className="space-y-4">

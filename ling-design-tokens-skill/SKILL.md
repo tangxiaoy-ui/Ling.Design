@@ -9,10 +9,10 @@ This skill provides access to the official Ling Design system global variables. 
 
 ## Available Tokens
 
-- **Colors**: Primary brand colors, status colors, and neutral grays. See [colors.md](references/colors.md).
-- **Spacing**: Margins, paddings, and gaps. See [spacing.md](references/spacing.md).
-- **Typography**: Font sizes and weights for different text levels. See [typography.md](references/typography.md).
-- **Border Radius**: Corner radius values for components. See [border-radius.md](references/border-radius.md).
+- **Colors**: Primary brand colors, status colors, and neutral grays. See [../docs/design-tokens/colors.md](../docs/design-tokens/colors.md).
+- **Spacing**: Margins, paddings, and gaps. See [../docs/design-tokens/spacing.md](../docs/design-tokens/spacing.md).
+- **Typography**: Font sizes and weights for different text levels. See [../docs/design-tokens/typography.md](../docs/design-tokens/typography.md).
+- **Border Radius**: Corner radius values for components. See [../docs/design-tokens/border-radius.md](../docs/design-tokens/border-radius.md).
 
 ## Usage Guidelines
 

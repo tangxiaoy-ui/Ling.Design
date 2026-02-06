@@ -3,6 +3,7 @@ import { MainLayout } from "./components/layout/MainLayout"
 import { DesignPage } from "./pages/design/DesignPage"
 import { ComponentsPage } from "./pages/components/ComponentsPage"
 import { IconsPage } from "./pages/icons/IconsPage"
+import { UserListDemo } from "./pages/UserListDemo"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="design" element={<DesignPage />} />
           <Route path="components" element={<ComponentsPage />} />
           <Route path="icons" element={<IconsPage />} />
+          <Route path="user-list" element={<UserListDemo />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,32 @@
+# Ling Design System
+
+> Enterprise UI Component Library based on React, TypeScript, and Tailwind CSS.
+
+## Project Context
+- **Framework**: React 18+
+- **Styling**: Tailwind CSS v3 (Utility-first) + CSS Modules (internal)
+- **Architecture**: Monorepo (Turbo)
+- **Distribution**: NPM (@ling-design/core) + Source Copy (Business Components)
+
+## Documentation for LLMs
+
+### Core Guidelines
+- [Integration Skill](ling-design-integration-skill/SKILL.md): How to use components and integrate them into apps.
+- [Requirements](docs/REQUIREMENTS.md): Product requirements and architectural goals.
+- [Architecture](docs/ARCHITECTURE.md): Technical architecture and distribution strategy.
+- [Roadmap](docs/ROADMAP.md): Development phases and future plans.
+- [Agents](docs/AGENTS.md): Documentation about available AI agents.
+
+### Design Tokens
+- [Colors](docs/design-tokens/colors.md)
+- [Typography](docs/design-tokens/typography.md)
+- [Spacing](docs/design-tokens/spacing.md)
+
+### Component API (Auto-generated)
+- [Component Props](ling-design-integration-skill/references/component-props.md): Detailed TypeScript interfaces for all core components. **Read this to avoid hallucinating props.**
+
+## Key Directories
+- `packages/core`: Core atomic components.
+- `packages/config`: Shared Tailwind config.
+- `apps/playground`: Usage examples.
+- `docs`: Project documentation and specifications.

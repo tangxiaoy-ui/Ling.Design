@@ -125,8 +125,15 @@ function CustomPage() {
 
 ## Best Practices
 
-1. **Token Compliance**: Always use design tokens from `@ling-design/config`. Do not hardcode colors or spacing.
-2. **Import Styles**: Import `@ling-design/core/styles.css` in your app entry.
+1.  **CRITICAL: Configure Tailwind Content**: You MUST add the core package to your `tailwind.config.js` content array, otherwise styles will not work:
+    ```js
+    content: [
+      "./src/**/*.{ts,tsx}",
+      "./node_modules/@ling-design/core/dist/**/*.{js,mjs}" // Essential for component styles
+    ]
+    ```
+2.  **Token Compliance**: Always use design tokens from `@ling-design/config`. Do not hardcode colors or spacing.
+3.  **Import Styles**: Import `@ling-design/core/styles.css` in your app entry.
 3. **TypeScript**: Use TypeScript for better type safety and IntelliSense.
 4. **Responsive**: StandardPage is responsive by default. Custom layouts should follow responsive design patterns.
 

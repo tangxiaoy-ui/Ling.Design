@@ -11,10 +11,10 @@ This skill guides you through creating React components that strictly adhere to 
 
 1.  **Analyze Requirements**: Understand the component's purpose and visual design.
 2.  **Check Design Tokens**: Consult the reference files to identify the correct tokens for colors, spacing, typography, and border radius.
-    *   **Colors**: `references/colors.md`
-    *   **Spacing**: `references/spacing.md`
-    *   **Typography**: `references/typography.md`
-    *   **Border Radius**: `references/border-radius.md`
+    *   **Colors**: `../docs/design-tokens/colors.md`
+    *   **Spacing**: `../docs/design-tokens/spacing.md`
+    *   **Typography**: `../docs/design-tokens/typography.md`
+    *   **Border Radius**: `../docs/design-tokens/border-radius.md`
     *   **CRITICAL**: If a required style is not found in the tokens, **STOP** and ask the user if they want to add a new token. Do not invent new values.
 3.  **Select Icons**: Check `references/icons.json` for available icons.
     *   Search the JSON file for keywords matching the required icon concepts.
@@ -31,8 +31,8 @@ This skill guides you through creating React components that strictly adhere to 
 
 ## References
 
-*   [Colors](references/colors.md)
-*   [Spacing](references/spacing.md)
-*   [Typography](references/typography.md)
-*   [Border Radius](references/border-radius.md)
+*   [Colors](../docs/design-tokens/colors.md)
+*   [Spacing](../docs/design-tokens/spacing.md)
+*   [Typography](../docs/design-tokens/typography.md)
+*   [Border Radius](../docs/design-tokens/border-radius.md)
 *   [Icons](references/icons.json)

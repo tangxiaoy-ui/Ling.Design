@@ -25,8 +25,9 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "@ling-design/config": "file:../../config",
-    "@ling-design/utils": "file:../../utils",
+    "@ling-design/config": "file:../config",
+    "@ling-design/utils": "file:../utils",
+    "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.0.0",
     "class-variance-authority": "^0.7.0"
   },
